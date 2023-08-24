@@ -1,5 +1,5 @@
 {
-  "name": "turborepo-template",
+  "name": "stats",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -10,8 +10,6 @@
     "build": "turbo run build --cache-dir=\"./.turbo_cache\"",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "test": "turbo run test",
-    "deploy": "turbo run deploy",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "clean": "turbo run clean && rm -rf node_modules",
     "lint:staged": "lint-staged",
@@ -19,14 +17,18 @@
     "check:commit:msg:staged": "commitlint --edit \"$1\""
   },
   "devDependencies": {
-    "@aiherrera/config": "workspace:*",
-    "@aiherrera/eslint-config-custom": "workspace:*",
     "@commitlint/cli": "^17.4.2",
+    "@stats/eslint-config-custom": "workspace:*",
+    "@stats/config": "workspace:*",
     "@types/node": "^17.0.12",
+    "concurrently": "^7.3.0",
+    "eslint": "8.37.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
+    "prettier": "^2.7.1",
     "pretty-quick": "^3.1.3",
-    "turbo": "latest"
+    "turbo": "latest",
+    "typescript": "^5.0.2"
   },
   "engines": {
     "node": ">=16.0.0"

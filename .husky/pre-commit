@@ -8,7 +8,7 @@ pnpm run lint:staged ||
 (
   echo '❌😱 Get that weak shit out of here!
     ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
-  false; 
+  false;
 )
 
 # Building...
@@ -16,7 +16,7 @@ echo '🛠 Trying to build the code... '
 
 pnpm run build ||
 (
-  echo '❌😱 Next build failed: View the errors above to see why.'
+  echo '❌😱 Build failed: View the errors above to see why.'
   false;
 )
 

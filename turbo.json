@@ -9,7 +9,6 @@
         "^build"
       ],
       "outputs": [
-        ".next/**",
         "dist/**"
       ]
     },
@@ -32,9 +31,7 @@
       ],
       "inputs": [
         "**/*.tsx",
-        "**/*.ts",
-        "test/**/*.ts",
-        "test/**/*.tsx"
+        "**/*.ts"
       ],
       "outputs": []
     },
@@ -58,6 +55,6 @@
   "globalEnv": [
     "NODE_ENV",
     "PORT",
-    "VERCEL_URL"
+    "DATABASE_URL"
   ]
 }
