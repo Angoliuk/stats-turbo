@@ -1,1 +1,1 @@
-export default '@stats/config/postcss.config.cjs'
+export default "@stats/config/postcss.config.cjs";

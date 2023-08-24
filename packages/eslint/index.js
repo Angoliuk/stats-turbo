@@ -1,29 +1,25 @@
-require('@rushstack/eslint-patch/modern-module-resolution');
+require("@rushstack/eslint-patch/modern-module-resolution");
 
 module.exports = {
-  ignorePatterns: ['node_modules', 'build/*', 'dist/*', '.eslintrc.cjs', '**/*.d.ts'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  extends: [
-    'turbo',
-    'plugin:@typescript-eslint/recommended-type-checked',
-    'plugin:@typescript-eslint/stylistic-type-checked',
-  ],
+  ignorePatterns: ["node_modules", "build/*", "dist/*", ".eslintrc.cjs", "**/*.d.ts"],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  extends: ["turbo", "plugin:@typescript-eslint/recommended"],
   rules: {
-    '@typescript-eslint/consistent-type-imports': [
-      'warn',
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
       {
-        prefer: 'type-imports',
-        fixStyle: 'inline-type-imports',
+        prefer: "type-imports",
+        fixStyle: "inline-type-imports",
       },
     ],
-    '@typescript-eslint/no-unused-vars': [
-      'warn',
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
       {
-        argsIgnorePattern: '^_',
+        argsIgnorePattern: "^_",
       },
     ],
-    '@typescript-eslint/consistent-type-definitions': 'off',
+    "@typescript-eslint/consistent-type-definitions": "off",
   },
 };
 

@@ -4,7 +4,8 @@
     "paths": {
       "@stats/*": ["./src/*"]
     },
+    "rootDir": "src"
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.cjs"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

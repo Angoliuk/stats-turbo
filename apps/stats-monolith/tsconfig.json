@@ -3,8 +3,9 @@
   "compilerOptions": {
     "paths": {
       "@stats/*": ["./src/*"]
-    }
+    },
+    "rootDir": "src"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

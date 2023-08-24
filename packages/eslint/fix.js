@@ -1,1 +1,1 @@
-module.exports = '@rushstack/eslint-patch/modern-module-resolution';
+module.exports = "@rushstack/eslint-patch/modern-module-resolution";

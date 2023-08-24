@@ -1,1 +1,1 @@
-export default '@stats/config/commitlint.config.cjs'
+export default "@stats/config/commitlint.config.cjs";

@@ -17,6 +17,10 @@
       "default": "./dist/utils/index.js",
       "types": "./src/utils/index.ts"
     },
+    "./components": {
+      "default": "./dist/components/index.js",
+      "types": "./src/components/index.ts"
+    },
     "./definitions": {
       "types": "./src/definitions.d.ts"
     }

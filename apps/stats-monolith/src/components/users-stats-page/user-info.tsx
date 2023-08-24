@@ -17,7 +17,7 @@ export const UserInfo: FC<UserInfoProps> = ({ userId }) => {
         name: "loading...",
         score: 0,
       },
-    }
+    },
   );
   if (!user) {
     // TODO: modal + redirect

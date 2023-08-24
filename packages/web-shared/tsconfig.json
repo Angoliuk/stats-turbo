@@ -13,11 +13,11 @@
     "noEmitOnError": false,
     "useUnknownInCatchVariables": false,
     "outDir": "dist",
-    "baseUrl": ".",
+    "rootDir": "src",
     "paths": {
       "@stats/shared-web/*": ["./src/*"]
     }
   },
-  "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.cjs"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

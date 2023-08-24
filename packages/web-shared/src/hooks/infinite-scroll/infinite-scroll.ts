@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from "react";
 
 /**
  * Hook that handles infinite scrolling.
@@ -33,7 +33,7 @@ export const useInfiniteScroll = ({
 
   useEffect(() => {
     const capturedRef = ref.current;
-    capturedRef?.addEventListener('scroll', handleScroll);
-    return () => capturedRef?.removeEventListener('scroll', handleScroll);
+    capturedRef?.addEventListener("scroll", handleScroll);
+    return () => capturedRef?.removeEventListener("scroll", handleScroll);
   }, [handleScroll, ref]);
 };

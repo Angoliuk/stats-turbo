@@ -5,9 +5,7 @@ import { type FC } from "react";
 type UserGamesGeneralStatsProps = {
   userId: string;
 };
-export const UserGamesGeneralStats: FC<UserGamesGeneralStatsProps> = ({
-  userId,
-}) => {
+export const UserGamesGeneralStats: FC<UserGamesGeneralStatsProps> = ({ userId }) => {
   const { data: gamesDurationStats } = api.stats.getUserGamesDuration.useQuery(
     {
       userId,
@@ -17,7 +15,7 @@ export const UserGamesGeneralStats: FC<UserGamesGeneralStatsProps> = ({
         avg: 0,
         sum: 0,
       },
-    }
+    },
   );
   const { data: ratio } = api.stats.getUserRatio.useQuery(
     { userId },
@@ -29,7 +27,7 @@ export const UserGamesGeneralStats: FC<UserGamesGeneralStatsProps> = ({
         loses: 0,
         loseRatio: "00.00",
       },
-    }
+    },
   );
   return (
     <>
@@ -46,16 +44,10 @@ export const UserGamesGeneralStats: FC<UserGamesGeneralStatsProps> = ({
         </div>
         <div className="flex flex-col items-center justify-around rounded-lg bg-zinc-700/60 p-5 sm:w-full sm:flex-row md:w-5/12 md:flex-col xl:flex-row">
           <p className="text-slate-200">
-            Average:{" "}
-            {Duration.fromMillis(gamesDurationStats.avg * 1000).toFormat(
-              "mm 'min' ss 'sec'"
-            )}
+            Average: {Duration.fromMillis(gamesDurationStats.avg * 1000).toFormat("mm 'min' ss 'sec'")}
           </p>
           <p className="text-slate-200">
-            Total:{" "}
-            {Duration.fromMillis(gamesDurationStats.sum * 1000).toFormat(
-              "hh 'hours' mm 'min'"
-            )}
+            Total: {Duration.fromMillis(gamesDurationStats.sum * 1000).toFormat("hh 'hours' mm 'min'")}
           </p>
         </div>
       </div>

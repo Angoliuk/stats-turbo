@@ -1,16 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [
-    "**/.env.*local"
-  ],
+  "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "lint": {
       "inputs": [
@@ -25,36 +19,20 @@
       ]
     },
     "test": {
-      "dependsOn": [
-        "lint",
-        "^build"
-      ],
-      "inputs": [
-        "**/*.tsx",
-        "**/*.ts"
-      ],
+      "dependsOn": ["lint", "^build"],
+      "inputs": ["**/*.tsx", "**/*.ts"],
       "outputs": []
     },
     "clean": {
-      "dependsOn": [
-        "^clean"
-      ]
+      "dependsOn": ["^clean"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "deploy": {
-      "dependsOn": [
-        "build",
-        "test",
-        "lint"
-      ]
+      "dependsOn": ["build", "test", "lint"]
     }
   },
-  "globalEnv": [
-    "NODE_ENV",
-    "PORT",
-    "DATABASE_URL"
-  ]
+  "globalEnv": ["NODE_ENV", "PORT", "DATABASE_URL"]
 }

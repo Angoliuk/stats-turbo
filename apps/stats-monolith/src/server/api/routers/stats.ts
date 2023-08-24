@@ -1,31 +1,31 @@
-import { type User, Prisma } from '@stats/prisma'
-import { createRouter, publicProcedure } from '@stats/server/api/trpc'
+import { type User, Prisma } from "@stats/prisma";
+import { createRouter, publicProcedure } from "@stats/server/api/trpc";
 import {
   type CountQueryReturn,
   type MatchStatsWithUsersStats,
   SortOrder,
-  type SumAndAvgQueryReturn
-} from '@stats/types'
-import { z } from 'zod'
+  type SumAndAvgQueryReturn,
+} from "@stats/types";
+import { z } from "zod";
 
 const paginationSchema = z.object({
   limit: z.number().min(0).max(100).default(20),
-  offset: z.number().min(0).max(100).default(0)
-})
+  offset: z.number().min(0).max(100).default(0),
+});
 
 export const statsRouter = createRouter({
   getUserById: publicProcedure
     .input(
       z.object({
-        userId: z.string()
-      })
+        userId: z.string(),
+      }),
     )
     .query(async ({ ctx: { prisma }, input: { userId } }) => {
       const usersList = await prisma.$queryRaw<[User] | []>`
         SELECT * FROM "User"
           WHERE "User".id = ${userId}
-    `
-      return usersList.length > 0 ? usersList[0] : null
+    `;
+      return usersList.length > 0 ? usersList[0] : null;
     }),
   getUsers: publicProcedure
     .input(
@@ -36,14 +36,14 @@ export const statsRouter = createRouter({
           sortBy: z
             .object({
               field: z.nativeEnum(Prisma.UserScalarFieldEnum),
-              order: z.nativeEnum(SortOrder)
+              order: z.nativeEnum(SortOrder),
             })
             .default({
-              field: 'createdAt',
-              order: SortOrder.DESC
-            })
+              field: "createdAt",
+              order: SortOrder.DESC,
+            }),
         })
-        .and(paginationSchema)
+        .and(paginationSchema),
     )
     .query(
       async ({
@@ -53,11 +53,11 @@ export const statsRouter = createRouter({
           name,
           limit,
           offset,
-          sortBy: { field, order }
-        }
+          sortBy: { field, order },
+        },
       }) => {
-        const nameSearch = name ? `%${name}%` : '%'
-        const orderBy = `${field} ${order}`
+        const nameSearch = name ? `%${name}%` : "%";
+        const orderBy = `${field} ${order}`;
         return await prisma.$queryRaw<User[]>`
           SELECT * FROM "User"
             WHERE "User".score BETWEEN ${scoreLimits[0]} AND ${scoreLimits[1]}
@@ -65,8 +65,8 @@ export const statsRouter = createRouter({
             ORDER BY ${orderBy}
             LIMIT ${limit}
             OFFSET ${offset}
-      `
-      }
+      `;
+      },
     ),
   getUserRatio: publicProcedure
     .input(z.object({ userId: z.string().min(1) }))
@@ -75,22 +75,22 @@ export const statsRouter = createRouter({
         SELECT COUNT(*) FROM "UserMatchStats"
           WHERE "UserMatchStats"."userId" = ${userId}
             AND "UserMatchStats"."isWinner" = FALSE
-      `
+      `;
 
       const [{ count: totalCount }] = await prisma.$queryRaw<CountQueryReturn>`
         SELECT COUNT(*) FROM "UserMatchStats"
           WHERE "UserMatchStats"."userId" = ${userId}
-      `
-      const total = Number(totalCount)
-      const loses = Number(losesCount)
+      `;
+      const total = Number(totalCount);
+      const loses = Number(losesCount);
 
       return {
         winRatio: (((total - loses) / total) * 100).toFixed(2),
         loseRatio: ((loses / total) * 100).toFixed(2),
         wins: total - loses,
         loses,
-        total
-      }
+        total,
+      };
     }),
   getUserGamesDuration: publicProcedure
     .input(z.object({ userId: z.string().min(1) }))
@@ -101,19 +101,17 @@ export const statsRouter = createRouter({
           AVG("MatchStats".duration)
         FROM "MatchStats"
           INNER JOIN "UserMatchStats" ON "MatchStats".id = "UserMatchStats"."matchStatsId"
-            WHERE "UserMatchStats"."userId" = ${userId}`
+            WHERE "UserMatchStats"."userId" = ${userId}`;
 
       return {
         sum: Number(sum),
-        avg: Number(avg)
-      }
+        avg: Number(avg),
+      };
     }),
   getUserLongestAndShortestGames: publicProcedure
     .input(z.object({ userId: z.string().min(1) }))
     .query(async ({ ctx: { prisma }, input: { userId } }) => {
-      return prisma.$queryRaw<
-        [MatchStatsWithUsersStats?, MatchStatsWithUsersStats?]
-      >`
+      return prisma.$queryRaw<[MatchStatsWithUsersStats?, MatchStatsWithUsersStats?]>`
       SELECT "MatchStats".*, ARRAY_TO_JSON(
         ARRAY_AGG(
           JSONB_SET(
@@ -135,7 +133,7 @@ export const statsRouter = createRouter({
         )
         GROUP BY "MatchStats"."id"
         ORDER BY "MatchStats".duration
-      `
+      `;
     }),
   getUserGamesStats: publicProcedure
     .input(
@@ -145,11 +143,11 @@ export const statsRouter = createRouter({
           sortBy: z
             .object({
               field: z.nativeEnum(Prisma.MatchStatsScalarFieldEnum),
-              order: z.nativeEnum(SortOrder)
+              order: z.nativeEnum(SortOrder),
             })
-            .default({ field: 'createdAt', order: SortOrder.DESC })
+            .default({ field: "createdAt", order: SortOrder.DESC }),
         })
-        .and(paginationSchema)
+        .and(paginationSchema),
     )
     .query(
       async ({
@@ -158,10 +156,10 @@ export const statsRouter = createRouter({
           userId,
           limit,
           offset,
-          sortBy: { field, order }
-        }
+          sortBy: { field, order },
+        },
       }) => {
-        const orderBy = `${field} ${order}`
+        const orderBy = `${field} ${order}`;
         return prisma.$queryRaw<MatchStatsWithUsersStats[]>`
           SELECT "MatchStats".*, ARRAY_TO_JSON(
             ARRAY_AGG(
@@ -181,8 +179,8 @@ export const statsRouter = createRouter({
             ORDER BY ${orderBy}
             LIMIT ${limit}
             OFFSET ${offset}
-          `
-      }
+          `;
+      },
     ),
   getGamesStats: publicProcedure
     .input(
@@ -191,14 +189,14 @@ export const statsRouter = createRouter({
           sortBy: z
             .object({
               field: z.nativeEnum(Prisma.MatchStatsScalarFieldEnum),
-              order: z.nativeEnum(SortOrder)
+              order: z.nativeEnum(SortOrder),
             })
             .default({
-              field: 'createdAt',
-              order: SortOrder.DESC
-            })
+              field: "createdAt",
+              order: SortOrder.DESC,
+            }),
         })
-        .and(paginationSchema)
+        .and(paginationSchema),
     )
     .query(
       async ({
@@ -206,10 +204,10 @@ export const statsRouter = createRouter({
         input: {
           limit,
           offset,
-          sortBy: { field, order }
-        }
+          sortBy: { field, order },
+        },
       }) => {
-        const orderBy = `${field} ${order}`
+        const orderBy = `${field} ${order}`;
         return prisma.$queryRaw<MatchStatsWithUsersStats[]>`
           SELECT "MatchStats".*, ARRAY_TO_JSON(
             ARRAY_AGG(
@@ -228,7 +226,7 @@ export const statsRouter = createRouter({
             ORDER BY ${orderBy}
             LIMIT ${limit}
             OFFSET ${offset}
-          `
-      }
-    )
-})
+          `;
+      },
+    ),
+});

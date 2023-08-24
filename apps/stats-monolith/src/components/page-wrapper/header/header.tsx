@@ -1,4 +1,4 @@
-import { type ReactNode, memo } from 'react'
+import { type ReactNode, memo } from "react";
 
 import {
   HeaderCenter,
@@ -6,16 +6,16 @@ import {
   HeaderLeft,
   type HeaderLeftProps,
   HeaderRight,
-  type HeaderRightProps
-} from './header-parts'
-import { tw } from '@stats/tailwind/merge'
+  type HeaderRightProps,
+} from "./header-parts";
+import { tw } from "@stats/tailwind/merge";
 
 export type HeaderProps = {
-  isHeaderShown?: boolean
-  header?: ReactNode
+  isHeaderShown?: boolean;
+  header?: ReactNode;
 } & HeaderLeftProps &
   HeaderCenterProps &
-  HeaderRightProps
+  HeaderRightProps;
 
 export const Header = memo(
   ({
@@ -27,30 +27,24 @@ export const Header = memo(
     isHeaderCenterShown,
     headerCenterClassName,
     headerRight,
-    isHeaderRightShown
+    isHeaderRightShown,
   }: HeaderProps) => {
-    if (!isHeaderShown) return null
+    if (!isHeaderShown) return null;
     return header ? (
       <>{header}</>
     ) : (
       <div
         className={tw(
-          'desktop:justify-between desktop:rounded-b-2xl desktop:py-1 desktop:shadow-[0_8px_16px_1px_rgba(141,141,141,0.12)] sticky top-0 z-50 flex h-20 w-full items-center bg-zinc-900/80 p-5'
+          "desktop:justify-between desktop:rounded-b-2xl desktop:py-1 desktop:shadow-[0_8px_16px_1px_rgba(141,141,141,0.12)] sticky top-0 z-50 flex h-20 w-full items-center bg-zinc-900/80 p-5",
         )}>
-        <HeaderLeft
-          headerLeft={headerLeft}
-          isHeaderLeftShown={isHeaderLeftShown}
-        />
+        <HeaderLeft headerLeft={headerLeft} isHeaderLeftShown={isHeaderLeftShown} />
         <HeaderCenter
           headerCenter={headerCenter}
           isHeaderCenterShown={isHeaderCenterShown}
           headerCenterClassName={headerCenterClassName}
         />
-        <HeaderRight
-          headerRight={headerRight}
-          isHeaderRightShown={isHeaderRightShown}
-        />
+        <HeaderRight headerRight={headerRight} isHeaderRightShown={isHeaderRightShown} />
       </div>
-    )
-  }
-)
+    );
+  },
+);
