@@ -1,0 +1,20 @@
+{
+  "extends": ["@stats/tsconfig/base.json"],
+  "compilerOptions": {
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "target": "ES2020",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "bundler",
+    "module": "ES2022",
+    "noEmit": false,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "noEmitOnError": false,
+    "useUnknownInCatchVariables": false,
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.cjs"],
+  "exclude": ["node_modules"]
+}

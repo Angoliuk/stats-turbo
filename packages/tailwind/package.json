@@ -1,0 +1,31 @@
+{
+  "name": "@stats/tailwind",
+  "version": "0.0.0",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "default": "./dist/tailwind.config.js",
+      "types": "./src/tailwind.config.ts"
+    },
+    "./theme": {
+      "default": "./dist/theme.js",
+      "types": "./src/theme.ts"
+    },
+    "./merge": {
+      "default": "./dist/merge.js",
+      "types": "./src/merge.ts"
+    }
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "build:verify": "tsc --noEmit",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.0",
+    "tailwind-merge": "^1.12.0",
+    "@stats/eslint-config-custom": "workspace:*",
+    "@stats/tsconfig": "workspace:*"
+  }
+}
