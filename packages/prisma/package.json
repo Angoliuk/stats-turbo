@@ -1,0 +1,22 @@
+{
+  "name": "@stats/prisma",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules",
+    "postinstall": "prisma generate",
+    "pullDB": "prisma db pull && prisma generate",
+    "pushDB": "prisma db push && prisma generate",
+    "generateDB": "prisma generate",
+    "openDB": "prisma studio"
+  },
+  "peerDependencies": {
+    "@prisma/client": "^5.0.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.0.0",
+    "@prisma/client": "^5.0.0"
+  }
+}
