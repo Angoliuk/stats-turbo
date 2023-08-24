@@ -1,0 +1,10 @@
+{
+  "extends": ["@stats/tsconfig/web.json"],
+  "compilerOptions": {
+    "paths": {
+      "@stats/*": ["./src/*"]
+    },
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.cjs"],
+  "exclude": ["node_modules"]
+}

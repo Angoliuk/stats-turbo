@@ -1,0 +1,12 @@
+{
+  "extends": ["@stats/tsconfig/web.json"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@stats/*": ["./src/*"]
+    },
+    "outDir": "dist"
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.cjs", "**/.d.ts"],
+  "exclude": ["node_modules"]
+}
