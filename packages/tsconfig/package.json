@@ -1,18 +1,14 @@
 {
-  "name": "@aiherrera/tsconfig",
+  "name": "@stats/tsconfig",
   "version": "0.0.0",
-  "description": "Typescript configurations shared between all workspaces",
-  "author": "Alain Iglesias",
-  "keywords": [
-    "config",
-    "configuration"
-  ],
-  "main": "index.js",
+  "main": "base.json",
   "license": "MIT",
   "private": true,
   "files": [
     "base.json",
-    "nextjs.json",
-    "react-library.json"
-  ]
+    "web.json"
+  ],
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules"
+  }
 }
