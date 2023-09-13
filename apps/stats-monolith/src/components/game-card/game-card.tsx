@@ -2,8 +2,8 @@ import { type RouterOutputs } from "@stats/utils/api";
 import { Duration } from "luxon";
 import { type FC } from "react";
 
-import { SVGIcon } from "../svg-icon/svg-icon";
 import { GameUserStats } from "./game-card-user-stats";
+import { SwordsIcon } from "@stats/svg";
 
 type GameCardProps = {
   game: RouterOutputs["stats"]["getGamesStats"][number];
@@ -20,7 +20,7 @@ export const GameCard: FC<GameCardProps> = ({ game }) => {
           </p>
         </div>
         <div className="flex justify-center">
-          <SVGIcon name="swordsIcon" width={48} height={48} />
+          <SwordsIcon className="h-12 w-12" />
         </div>
         <div>
           <p className="text-center text-cyan-600">

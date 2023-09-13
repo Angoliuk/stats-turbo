@@ -1,8 +1,7 @@
+import { CupIcon } from "@stats/svg";
 import { api } from "@stats/utils/api";
 import Image from "next/image";
 import { type FC } from "react";
-
-import { SVGIcon } from "../svg-icon";
 
 type UserInfoProps = {
   userId: string;
@@ -35,7 +34,7 @@ export const UserInfo: FC<UserInfoProps> = ({ userId }) => {
       <div>
         <p className="text-2xl text-slate-200">{user.name}</p>
         <div className="flex">
-          <SVGIcon name="cupIcon" width={16} height={16} />
+          <CupIcon className="h-4 w-4" />
           <p className="ml-2 text-lg text-slate-200">{user.score}</p>
         </div>
       </div>

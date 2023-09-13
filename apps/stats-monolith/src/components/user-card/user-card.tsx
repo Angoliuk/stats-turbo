@@ -1,9 +1,9 @@
+import { CupIcon, UserIcon } from "@stats/svg";
 import { type RouterOutputs } from "@stats/utils/api";
 import Image from "next/image";
 import Link from "next/link";
 import { type FC } from "react";
 
-import { SVGIcon } from "../svg-icon";
 type UserCardProps = {
   user: RouterOutputs["stats"]["getUsers"][number];
 };
@@ -20,11 +20,11 @@ export const UserCard: FC<UserCardProps> = ({ user }) => {
         />
         <div className="pl-5">
           <div className="flex justify-between">
-            <SVGIcon name="userIcon" width={16} height={16} />
+            <UserIcon className="h-4 w-4" />
             <p className="pl-2 text-2xl text-slate-200">{user.name}</p>
           </div>
           <div className="flex">
-            <SVGIcon name="cupIcon" width={16} height={16} />
+            <CupIcon className="h-4 w-4" />
             <p className="ml-2 text-lg text-slate-200">{user.score}</p>
           </div>
         </div>

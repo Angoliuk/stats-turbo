@@ -1,6 +1,5 @@
 import { api } from "@stats/utils/api";
 import { type FC } from "react";
-
 import { GameCard } from "../game-card";
 import { List } from "../list";
 

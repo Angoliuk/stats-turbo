@@ -1,4 +1,4 @@
-export * as cupIcon from "./cup.svg";
-export * as medalIcon from "./medal.svg";
-export * as userIcon from "./user.svg";
-export * as swordsIcon from "./swords.svg";
+export { default as CupIcon } from "./cup.svg";
+export { default as MedalIcon } from "./medal.svg";
+export { default as UserIcon } from "./user.svg";
+export { default as SwordsIcon } from "./swords.svg";
