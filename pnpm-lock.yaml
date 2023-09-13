@@ -348,6 +348,9 @@ importers:
       '@prisma/client':
         specifier: ^5.0.0
         version: 5.0.0(prisma@5.0.0)
+      '@stats/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint
       prisma:
         specifier: ^5.0.0
         version: 5.0.0
@@ -390,9 +393,6 @@ importers:
       '@stats/eslint-config-custom':
         specifier: workspace:*
         version: link:../eslint
-      '@stats/shared-api':
-        specifier: workspace:*
-        version: link:../api-shared
       '@stats/tailwind':
         specifier: workspace:*
         version: link:../tailwind
