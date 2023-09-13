@@ -1,0 +1,60 @@
+{
+  "name": "@stats/shared-api",
+  "version": "0.0.0",
+  "licenses": [
+    {}
+  ],
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./utils": {
+      "types": "./src/utils/index.ts",
+      "default": "./dist/utils/index.js"
+    },
+    "./validation": {
+      "types": "./src/validation/index.ts",
+      "default": "./dist/validation/index.js"
+    },
+    "./types": {
+      "types": "./src/types/index.ts",
+      "default": "./dist/types/index.js"
+    },
+    "./db": {
+      "types": "./src/db/index.ts",
+      "default": "./dist/db/index.js"
+    },
+    "./modules": {
+      "types": "./src/modules/index.ts",
+      "default": "./dist/modules/index.js"
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:verify": "tsc --noEmit",
+    "dev": "tsc --watch",
+    "lint": "concurrently \"eslint . --max-warnings=0 --ext .ts\" \"prettier --check './{src,test}/**/*.ts'\"  \"tsc --noEmit \"",
+    "lint:fix": "eslint . --ext .ts --fix && prettier --write './{src,test}/**/*.ts' ",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@stats/eslint-config-custom": "workspace:*",
+    "@stats/tsconfig": "workspace:*",
+    "@stats/prisma": "workspace:*",
+    "@trpc/server": "^10.14.1",
+    "superjson": "1.12.2",
+    "@types/node": "^18.7.1",
+    "zod": "^3.20.3"
+  },
+  "peerDependencies": {
+    "@trpc/server": "^10.14.1",
+    "superjson": "1.12.2",
+    "zod": "^3.20.3"
+  }
+}

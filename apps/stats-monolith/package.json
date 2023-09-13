@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
     "dev": "next dev",
-    "docker": "docker-compose -f docker-compose.yaml up",
-    "docker:build": "docker-compose -f docker-compose.yaml up --build",
-    "lint": "next lint"
+    "build": "next build",
+    "docker": "docker-compose -f ../../docker-compose.monolith.yaml up",
+    "docker:build": "docker-compose -f ../../docker-compose.monolith.yaml up --build",
+    "lint": "concurrently \"next lint\" \"tsc --noEmit\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
@@ -15,10 +16,10 @@
     "@prisma/client": "^5.0.0",
     "@t3-oss/env-nextjs": "^0.3.1",
     "@tanstack/react-query": "^4.29.7",
-    "@trpc/client": "^10.26.0",
-    "@trpc/next": "^10.26.0",
-    "@trpc/react-query": "^10.26.0",
-    "@trpc/server": "^10.26.0",
+    "@trpc/client": "^10.14.1",
+    "@trpc/next": "^10.14.1",
+    "@trpc/react-query": "^10.14.1",
+    "@trpc/server": "^10.14.1",
     "luxon": "^3.3.0",
     "next": "latest",
     "react": "18.2.0",
@@ -33,12 +34,12 @@
     "@stats/prisma": "workspace:*",
     "@stats/tailwind": "workspace:*",
     "@stats/tsconfig": "workspace:*",
+    "@stats/shared-api": "workspace:*",
+    "@svgr/webpack": "^8.1.0",
     "@types/luxon": "^3.3.0",
     "@types/node": "^18.16.0",
     "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.21"
+    "@types/react-dom": "^18.2.4"
   },
   "ct3aMetadata": {
     "initVersion": "7.16.0"

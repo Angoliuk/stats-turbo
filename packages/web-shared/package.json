@@ -4,22 +4,24 @@
   "licenses": [
     {}
   ],
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
   "exports": {
     "./constants": {
-      "default": "./dist/constants/index.js",
-      "types": "./src/constants/index.ts"
+      "types": "./src/constants/index.ts",
+      "default": "./dist/constants/index.js"
     },
     "./interfaces": {
-      "default": "./dist/interfaces/index.js",
-      "types": "./src/interfaces/index.ts"
+      "types": "./src/interfaces/index.ts",
+      "default": "./dist/interfaces/index.js"
     },
     "./utils": {
-      "default": "./dist/utils/index.js",
-      "types": "./src/utils/index.ts"
+      "types": "./src/utils/index.ts",
+      "default": "./dist/utils/index.js"
     },
     "./components": {
-      "default": "./dist/components/index.js",
-      "types": "./src/components/index.ts"
+      "types": "./src/components/index.ts",
+      "default": "./dist/components/index.js"
     },
     "./definitions": {
       "types": "./src/definitions.d.ts"
@@ -29,22 +31,42 @@
     "dev": "tsc --watch",
     "build": "tsc",
     "build:verify": "tsc --noEmit",
-    "lint": "concurrently \"eslint --ext '.tsx,.ts' --max-warnings=0 . \" \"prettier --check './{src,test}/**/*.{ts,tsx}'\"",
+    "lint": "concurrently \"eslint --ext '.tsx,.ts' --max-warnings=0 . \" \"prettier --check './{src,test}/**/*.{ts,tsx}' --config '../../.prettierrc'\" \"tsc --noEmit \"",
+    "lint:fix": "eslint . --ext .ts --fix && prettier --write './{src,test}/**/*.ts' ",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@stats/config": "workspace:*",
+    "@stats/api": "workspace:*",
+    "@stats/shared-api": "workspace:*",
     "@stats/eslint-config-custom": "workspace:*",
     "@stats/tailwind": "workspace:*",
     "@stats/tsconfig": "workspace:*",
+    "@tanstack/react-router": "0.0.1-beta.185",
+    "@trpc/client": "^10.14.1",
+    "@trpc/react-query": "^10.14.1",
+    "@trpc/server": "^10.14.1",
+    "@types/luxon": "^3.3.0",
+    "@types/node": "14.14.14",
+    "@types/react": "^18.2.5",
+    "luxon": "^3.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@types/node": "14.14.14",
-    "@types/react": "^18.2.5"
+    "superjson": "1.12.2",
+    "vite": "^4.3.4",
+    "vite-plugin-svgr": "^2.4.0"
   },
   "peerDependencies": {
+    "@tanstack/react-router": "0.0.1-beta.185",
+    "@trpc/client": "^10.14.1",
+    "@trpc/react-query": "^10.14.1",
+    "luxon": "^3.3.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "superjson": "1.12.2",
+    "@tanstack/react-query": "^4.29.7",
+    "vite": "^4.3.4",
+    "vite-plugin-svgr": "^2.4.0"
   },
   "resolutions": {
     "@types/react": "18.0.27",

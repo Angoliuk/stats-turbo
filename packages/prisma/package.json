@@ -5,17 +5,20 @@
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {
-    "clean": "rm -rf .turbo && rm -rf node_modules",
     "postinstall": "prisma generate",
     "pullDB": "prisma db pull && prisma generate",
     "pushDB": "prisma db push && prisma generate",
     "generateDB": "prisma generate",
-    "openDB": "prisma studio"
+    "openDB": "prisma studio",
+    "lint": "concurrently \"eslint . --max-warnings=0 --ext .ts\" \"prettier --check './{src,test}/**/*.ts'\"",
+    "lint:fix": "eslint . --ext .ts --fix && prettier --write './{src,test}/**/*.ts' ",
+    "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "peerDependencies": {
     "@prisma/client": "^5.0.0"
   },
   "devDependencies": {
+    "@stats/eslint-config-custom": "workspace:*",
     "prisma": "^5.0.0",
     "@prisma/client": "^5.0.0"
   }
