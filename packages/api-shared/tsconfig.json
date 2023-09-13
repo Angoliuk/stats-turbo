@@ -1,0 +1,12 @@
+{
+  "extends": ["@stats/tsconfig/api.json"],
+  "compilerOptions": {
+    "paths": {
+      "@stats/shared-api/*": ["./src/*"]
+    },
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}

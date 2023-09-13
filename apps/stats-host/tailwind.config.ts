@@ -1,5 +1,5 @@
 import defaultConfig, { type Config } from "@stats/tailwind";
 
 export default {
-  ...defaultConfig,
+  presets: [defaultConfig],
 } satisfies Config;

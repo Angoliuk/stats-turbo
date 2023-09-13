@@ -13,12 +13,4 @@ module.exports = {
   pluginSearchDirs: false,
   quoteProps: "consistent",
   embeddedLanguageFormatting: "off",
-  // importOrderSeparation: true,
-  // importOrderSortSpecifiers: true,
-  // importOrderGroupNamespaceSpecifiers: true,
-  // importOrderMergeDuplicateImports: true,
-  // importOrderCombineTypeAndValueImports: true,
-  // importOrderBuiltinModulesToTop: true,
-  // importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
-  // importOrder: ["^@/", "^[./]"],
 };

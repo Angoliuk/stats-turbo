@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "incremental": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": true,
+    "moduleDetection": "auto",
+    "module": "Node16",
+    "noEmit": false,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "importsNotUsedAsValues": "error",
+    "ignoreDeprecations": "5.0",
+    "strictFunctionTypes": false,
+    "skipDefaultLibCheck": true
+  },
+  "exclude": [
+    "build"
+  ]
+}

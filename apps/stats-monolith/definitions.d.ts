@@ -12,8 +12,3 @@ declare module "react" {
     render: ForwardRefRenderFunction<T, Readonly<React.ComponentProps<C>>>,
   ): ForwardRefExoticComponent<PropsWithoutRef<P> & RefAttributes<T>>;
 }
-
-declare module "*.svg" {
-  const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-  export default content;
-}
