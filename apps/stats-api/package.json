@@ -6,7 +6,10 @@
     "dev": "nodemon --watch src --exec ts-node src/index.ts",
     "build": "tsc",
     "build:verify": "tsc --noEmit",
-    "start": "NODE_ENV=production node dist/index.js"
+    "start": "NODE_ENV=production node dist/index.js",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "lint": "concurrently \"eslint --ext '.tsx,.ts' --max-warnings=0 . \" \"prettier --check './{src,test}/**/*.{ts,tsx}' --config '../../.prettierrc'\" \"tsc --noEmit \"",
+    "lint:fix": "eslint . --ext .ts --fix && prettier --write './{src,test}/**/*.ts'"
   },
   "dependencies": {
     "@trpc/server": "^10.14.1",
