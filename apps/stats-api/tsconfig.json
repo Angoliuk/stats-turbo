@@ -1,7 +1,6 @@
 {
   "extends": "@stats/tsconfig/api.json",
   "compilerOptions": {
-    // "composite": true,
     "rootDir": "src",
     "outDir": "dist"
   },
