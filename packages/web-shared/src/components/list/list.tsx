@@ -1,4 +1,4 @@
-import { type ReactNode, type Ref, type UIEventHandler, type ReactElement, Fragment } from "react";
+import { type ReactNode, type Ref, type UIEventHandler, type ReactElement, Fragment, memo } from "react";
 import { Loader } from "../loader";
 import { tw } from "@stats/tailwind/merge";
 import { useForwardedRef, useInfiniteScroll } from "@stats/shared-web/hooks";
@@ -31,69 +31,71 @@ export type ListProps<T> = {
   onScroll?: UIEventHandler<HTMLDivElement>;
 };
 
-export const List = <T,>({
-  listRef,
-  data,
-  isError,
-  error,
-  isFirstLoading,
-  isFetchingMore,
-  isRefetching,
-  inverted,
-  horizontal,
-  errorComponent,
-  emptyComponent,
-  headerComponent,
-  className,
-  loaderWrapperClassName,
-  endReachedThreshold,
-  contentWrapperClassName,
-  isContentWrapped,
-  listItem,
-  loadMore,
-  keyExtractor,
-  onScroll,
-}: ListProps<T>): ReactElement | null => {
-  const innerRef = useForwardedRef(listRef);
-
-  useInfiniteScroll({
-    ref: innerRef,
-    loadMore,
+export const List = memo(
+  <T,>({
+    listRef,
+    data,
+    isError,
+    error,
+    isFirstLoading,
+    isFetchingMore,
+    isRefetching,
     inverted,
+    horizontal,
+    errorComponent,
+    emptyComponent,
+    headerComponent,
+    className,
+    loaderWrapperClassName,
     endReachedThreshold,
-    enabled: !isFetchingMore && !isRefetching,
-  });
+    contentWrapperClassName,
+    isContentWrapped,
+    listItem,
+    loadMore,
+    keyExtractor,
+    onScroll,
+  }: ListProps<T>): ReactElement | null => {
+    const innerRef = useForwardedRef(listRef);
 
-  if (isFirstLoading) return <Loader className="my-4 min-h-[20px]" wrapperClassName={loaderWrapperClassName} />;
-  if (isError) return errorComponent ? <>{errorComponent}</> : <p>{error}</p>;
-  if ((!data || data.length === 0) && emptyComponent) return <>{emptyComponent}</>;
+    useInfiniteScroll({
+      ref: innerRef,
+      loadMore,
+      inverted,
+      endReachedThreshold,
+      enabled: !isFetchingMore && !isRefetching,
+    });
 
-  // eslint-disable-next-line no-nested-ternary
-  const direction = horizontal
-    ? inverted
-      ? "flex-row-reverse"
-      : "flex-row"
-    : inverted
-    ? "flex-col-reverse"
-    : "flex-col";
+    if (isFirstLoading) return <Loader className="my-4 min-h-[20px]" wrapperClassName={loaderWrapperClassName} />;
+    if (isError) return errorComponent ? <>{errorComponent}</> : <p>{error}</p>;
+    if ((!data || data.length === 0) && emptyComponent) return <>{emptyComponent}</>;
 
-  const withContentWrapper = (children: ReactNode) =>
-    isContentWrapped ? (
-      <div className={tw("flex w-full flex-wrap items-center", contentWrapperClassName)}>{children}</div>
-    ) : (
-      children
+    // eslint-disable-next-line no-nested-ternary
+    const direction = horizontal
+      ? inverted
+        ? "flex-row-reverse"
+        : "flex-row"
+      : inverted
+      ? "flex-col-reverse"
+      : "flex-col";
+
+    const withContentWrapper = (children: ReactNode) =>
+      isContentWrapped ? (
+        <div className={tw("flex w-full flex-wrap items-center", contentWrapperClassName)}>{children}</div>
+      ) : (
+        children
+      );
+
+    return (
+      <div ref={innerRef} className={tw("flex", direction, className)} onScroll={onScroll}>
+        {headerComponent}
+        {isRefetching && !isFetchingMore && <Loader className="my-4 min-h-[20px]" />}
+        {withContentWrapper(
+          data?.map((item, index) => (
+            <Fragment key={keyExtractor({ item, index })}>{listItem({ item, index })}</Fragment>
+          )),
+        )}
+        {isFetchingMore && !isRefetching && <Loader className="my-4 min-h-[20px]" />}
+      </div>
     );
-
-  return (
-    <div ref={innerRef} className={tw("flex", direction, className)} onScroll={onScroll}>
-      {headerComponent}
-      {isRefetching && !isFetchingMore && <Loader className="my-4 min-h-[20px]" />}
-      {withContentWrapper(
-        data?.map((item, index) => (
-          <Fragment key={keyExtractor({ item, index })}>{listItem({ item, index })}</Fragment>
-        )),
-      )}
-      {isFetchingMore && !isRefetching && <Loader className="my-4 min-h-[20px]" />}
-    </div>
-  );
-};
+  },
+);

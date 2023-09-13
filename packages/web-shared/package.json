@@ -38,7 +38,6 @@
   "devDependencies": {
     "@stats/config": "workspace:*",
     "@stats/api": "workspace:*",
-    "@stats/shared-api": "workspace:*",
     "@stats/eslint-config-custom": "workspace:*",
     "@stats/tailwind": "workspace:*",
     "@stats/tsconfig": "workspace:*",

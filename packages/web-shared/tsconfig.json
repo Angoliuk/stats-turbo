@@ -13,11 +13,11 @@
     "noEmitOnError": false,
     "useUnknownInCatchVariables": false,
     "outDir": "dist",
-    "rootDir": "src",
     "paths": {
-      "@stats/shared-web/*": ["./src/*"]
+      "@stats/shared-web/*": ["./src/*"],
+      "@stats/api/*": ["../../apps/stats-api/src/*"]
     }
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "include": ["src"]
 }
