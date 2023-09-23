@@ -1,7 +1,7 @@
 require("@rushstack/eslint-patch/modern-module-resolution");
 
 module.exports = {
-  ignorePatterns: ["node_modules", "build/*", "dist/*", ".eslintrc.cjs", "**/*.d.ts"],
+  ignorePatterns: ["node_modules", "build/*", "dist/*", ".eslintrc.cjs", "**/*.d.ts", ".history"],
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint"],
   extends: ["turbo", "plugin:@typescript-eslint/recommended"],
