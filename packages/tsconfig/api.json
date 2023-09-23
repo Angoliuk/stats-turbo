@@ -16,7 +16,5 @@
     "strictFunctionTypes": false,
     "skipDefaultLibCheck": true
   },
-  "exclude": [
-    "build"
-  ]
+  "exclude": ["build"]
 }

@@ -14,8 +14,7 @@
     "useUnknownInCatchVariables": false,
     "outDir": "dist",
     "paths": {
-      "@stats/shared-web/*": ["./src/*"],
-      "@stats/api/*": ["../../apps/stats-api/src/*"]
+      "@stats/shared-web/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules"],
