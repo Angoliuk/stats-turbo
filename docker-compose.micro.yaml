@@ -1,5 +1,15 @@
 version: "3.8"
 services:
+  stats-api:
+    build:
+      context: ./
+      dockerfile: ./dockerfile.api
+    depends_on:
+      - redis
+      - postgres
+    ports:
+      - "5555:80"
+    restart: unless-stopped
   stats-host:
     build:
       context: ./
@@ -51,19 +61,19 @@ services:
         limits:
           cpus: "1"
           memory: 4G
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    depends_on:
-      - postgres
-    ports:
-      - "5555:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
-      PGADMIN_DEFAULT_PASSWORD: admin
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    restart: unless-stopped
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin
+  #   depends_on:
+  #     - postgres
+  #   ports:
+  #     - "5555:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+  #     PGADMIN_DEFAULT_PASSWORD: admin
+  #   volumes:
+  #     - pgadmin-data:/var/lib/pgadmin
+  #   restart: unless-stopped
 volumes:
   pgdata:
-  pgadmin-data:
+  # pgadmin-data:
