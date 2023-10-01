@@ -10,6 +10,36 @@ services:
     ports:
       - "5520:3000"
     restart: unless-stopped
+  stats-api:
+    build:
+      context: ./
+      dockerfile: ./dockerfile.api
+    depends_on:
+      - redis
+      - postgres
+    ports:
+      - "5555:80"
+    restart: unless-stopped
+  stats-host:
+    build:
+      context: ./
+      dockerfile: ./dockerfile.host
+    depends_on:
+      - redis
+      - postgres
+    ports:
+      - "5521:80"
+    restart: unless-stopped
+  stats-remote:
+    build:
+      context: ./
+      dockerfile: ./dockerfile.remote
+    depends_on:
+      - redis
+      - postgres
+    ports:
+      - "5522:80"
+    restart: unless-stopped
   redis:
     image: redis:7.0.0-alpine
     read_only: true
