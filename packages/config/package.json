@@ -9,7 +9,7 @@
     "commitlint.config.cjs"
   ],
   "scripts": {
-    "clean": "rm -rf .turbo && rm -rf node_modules"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -f tsconfig.tsbuildinfo"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.4.2",

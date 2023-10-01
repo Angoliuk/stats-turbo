@@ -8,7 +8,7 @@
     "docker": "docker-compose -f ../../docker-compose.monolith.yaml up",
     "docker:build": "docker-compose -f ../../docker-compose.monolith.yaml up --build",
     "lint": "concurrently \"next lint\" \"tsc --noEmit\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -f tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",

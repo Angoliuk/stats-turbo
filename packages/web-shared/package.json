@@ -23,6 +23,14 @@
       "types": "./src/components/index.ts",
       "default": "./dist/components/index.js"
     },
+    "./svg": {
+      "types": "./src/svg/index.ts",
+      "default": "./dist/svg/index.js"
+    },
+    "./hooks": {
+      "types": "./src/hooks/index.ts",
+      "default": "./dist/hooks/index.js"
+    },
     "./definitions": {
       "types": "./src/definitions.d.ts"
     }
@@ -31,9 +39,9 @@
     "dev": "tsc --watch",
     "build": "tsc",
     "build:verify": "tsc --noEmit",
-    "lint": "concurrently \"eslint --ext '.tsx,.ts' --max-warnings=0 . \" \"prettier --check './{src,test}/**/*.{ts,tsx}' --config '../../.prettierrc'\" \"tsc --noEmit \"",
-    "lint:fix": "eslint . --ext .ts --fix && prettier --write './{src,test}/**/*.ts' ",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "lint": "concurrently \"eslint --ext '.tsx,.ts' --max-warnings=0 . \" \"prettier --check './**/*.{ts,tsx}' --config '../../.prettierrc'\" \"tsc --noEmit \"",
+    "lint:fix": "eslint . --ext '.tsx,.ts' --fix && prettier --write './{src,test}/**/*.{ts,tsx}' ",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -f tsconfig.tsbuildinfo"
   },
   "devDependencies": {
     "@stats/config": "workspace:*",

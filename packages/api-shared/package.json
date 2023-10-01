@@ -39,9 +39,9 @@
     "build": "tsc",
     "build:verify": "tsc --noEmit",
     "dev": "tsc --watch",
-    "lint": "concurrently \"eslint . --max-warnings=0 --ext .ts\" \"prettier --check './{src,test}/**/*.ts'\"  \"tsc --noEmit \"",
-    "lint:fix": "eslint . --ext .ts --fix && prettier --write './{src,test}/**/*.ts' ",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "lint": "concurrently \"eslint . --max-warnings=0 --ext .ts\" \"prettier --check './**/*.ts'\"  \"tsc --noEmit \"",
+    "lint:fix": "eslint . --ext .ts --fix && prettier --write './**/*.ts' ",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -f tsconfig.tsbuildinfo"
   },
   "devDependencies": {
     "@stats/eslint-config-custom": "workspace:*",

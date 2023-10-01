@@ -2,23 +2,37 @@
   "name": "@stats/prisma",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
   "scripts": {
     "postinstall": "prisma generate",
     "pullDB": "prisma db pull && prisma generate",
     "pushDB": "prisma db push && prisma generate",
     "generateDB": "prisma generate",
     "openDB": "prisma studio",
-    "lint": "concurrently \"eslint . --max-warnings=0 --ext .ts\" \"prettier --check './{src,test}/**/*.ts'\"",
-    "lint:fix": "eslint . --ext .ts --fix && prettier --write './{src,test}/**/*.ts' ",
-    "clean": "rm -rf .turbo && rm -rf node_modules"
+    "build": "tsc",
+    "build:verify": "tsc --noEmit",
+    "dev": "tsc --watch",
+    "lint": "concurrently \"eslint . --max-warnings=0 --ext .ts\" \"prettier --check './**/*.ts'\"",
+    "lint:fix": "eslint . --ext .ts --fix && prettier --write './**/*.ts' ",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -f tsconfig.tsbuildinfo"
   },
   "peerDependencies": {
     "@prisma/client": "^5.0.0"
   },
   "devDependencies": {
     "@stats/eslint-config-custom": "workspace:*",
+    "@stats/tsconfig": "workspace:*",
+    "@types/node": "^18.7.1",
     "prisma": "^5.0.0",
     "@prisma/client": "^5.0.0"
   }

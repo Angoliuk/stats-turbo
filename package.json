@@ -7,8 +7,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build --cache-dir=\"./.turbo_cache\"",
     "dev": "turbo run dev --parallel",
+    "dev:app": "turbo run dev --filter='./apps/*'",
+    "dev:lib": "turbo run dev --filter='./packages/*'",
+    "build": "turbo run build --cache-dir=\"./.turbo_cache\"",
+    "build:app": "turbo run build --filter='./apps/*'",
+    "build:lib": "turbo run build --filter='./packages/*'",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "clean": "turbo run clean && rm -rf node_modules",
