@@ -4,9 +4,10 @@ dotenv.config();
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "./root";
 import { createTRPCContext } from "./trpc";
+import { PORT } from "./env";
 
 const app = express();
-const port = process.env.PORT || 4000;
+
 app.use(express.json());
 
 // do i need that?
@@ -22,6 +23,6 @@ app.use(
   }),
 );
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at PORT ${port} at ${`http://localhost:${port}`}`);
+app.listen(PORT, () => {
+  console.log(`[server]: Server is running at PORT ${PORT} at ${`http://localhost:${PORT}`}`);
 });
