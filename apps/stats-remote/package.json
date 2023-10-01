@@ -4,23 +4,24 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 5522 --strictPort",
+    "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 5522 --strictPort",
-    "serve": "vite preview --port 5522 --strictPort",
+    "preview": "vite preview",
+    "serve": "vite preview",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -f tsconfig.tsbuildinfo",
     "lint": "concurrently \"eslint --ext '.tsx,.ts' --max-warnings=0 . \" \"prettier --check './{src,test}/**/*.{ts,tsx}' --config '../../.prettierrc'\" \"tsc --noEmit \"",
     "lint:fix": "eslint . --ext '.tsx,.ts' --fix && prettier --write './**/*.{ts,tsx}' "
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.7",
     "@tanstack/react-router": "0.0.1-beta.185",
+    "@trpc/client": "^10.14.1",
+    "@trpc/react-query": "^10.14.1",
+    "envalid": "^8.0.0",
+    "luxon": "^3.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@trpc/client": "^10.14.1",
-    "superjson": "1.12.2",
-    "luxon": "^3.3.0",
-    "@trpc/react-query": "^10.14.1",
-    "@tanstack/react-query": "^4.29.7"
+    "superjson": "1.12.2"
   },
   "devDependencies": {
     "@originjs/vite-plugin-federation": "^1.2.1",

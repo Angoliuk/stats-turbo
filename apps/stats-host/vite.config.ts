@@ -1,9 +1,9 @@
 import { defineConfig, loadEnv } from "vite";
-import react from "@vitejs/plugin-react";
-import federation from "@originjs/vite-plugin-federation";
-import svgr from "vite-plugin-svgr";
-import path from "path";
 import { Environment } from "./src/env/env";
+import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
+import federation from "@originjs/vite-plugin-federation";
+import path from "path";
 
 type Env = Record<string, string>;
 
@@ -14,6 +14,7 @@ const envPlugin = (env: Env) => ({
   },
 });
 
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   return {
@@ -22,22 +23,21 @@ export default defineConfig(({ mode }) => {
       react(),
       svgr(),
       federation({
-        name: "remote_app",
-        filename: "remoteEntry.js",
-        exposes: {
-          "./modules": "./src/modules",
+        name: "app",
+        remotes: {
+          "@stats/remote": "http://localhost:5522/assets/remoteEntry.js",
         },
         shared: ["react", "react-dom"],
       }),
     ],
     server: {
       host: true,
-      port: env.VITE_APP_PORT ? Number(env.VITE_APP_PORT) : 5522,
+      port: env.VITE_APP_PORT ? Number(env.VITE_APP_PORT) : 5521,
       open: true,
     },
     resolve: {
       alias: {
-        "@stats/remote": path.resolve(__dirname, "./src/"),
+        "@stats/host": path.resolve(__dirname, "./src/"),
         "@stats/shared-web": path.resolve(__dirname, "../../packages/web-shared/dist/"),
       },
     },
