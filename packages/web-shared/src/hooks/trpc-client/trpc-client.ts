@@ -4,13 +4,13 @@ import { QueryClient } from "@tanstack/react-query";
 import superjson from "superjson";
 import { httpBatchLink } from "@trpc/react-query";
 
-export const useTRPCClient = () => {
+export const useTRPCClient = (url: string) => {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "http://localhost:3000/trpc",
+          url,
           // You can pass any HTTP headers you wish here
           // async headers() {
           //   return {

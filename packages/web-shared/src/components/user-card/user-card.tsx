@@ -8,7 +8,11 @@ type UserCardProps = {
 };
 export const UserCard: FC<UserCardProps> = memo(({ user }) => {
   return (
-    <Link to={`/users-stats/${user.id}`}>
+    <Link
+      to={`/users-stats/$userId`}
+      params={{
+        userId: user.id,
+      }}>
       <div className="m-5 flex items-center rounded-lg bg-zinc-700/60 p-5">
         {/* <Image
           alt=""

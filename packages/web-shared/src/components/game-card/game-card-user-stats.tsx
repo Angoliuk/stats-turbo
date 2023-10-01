@@ -17,7 +17,12 @@ const DeletedGameUserStats: FC = () => {
 
 export const GameUserStats: FC<GameUserStatsProps> = memo(({ userGameStats }) => {
   return userGameStats ? (
-    <Link className="w-full md:w-5/12 xl:w-2/6" to={`/users-stats/${userGameStats.userId}`}>
+    <Link
+      className="w-full md:w-5/12 xl:w-2/6"
+      to={`/users-stats/$userId`}
+      params={{
+        userId: userGameStats.userId,
+      }}>
       <div className="flex flex-row rounded-lg bg-zinc-700/60 p-5 md:flex-col lg:flex-row lg:items-center">
         {/* <Image
           alt=""
