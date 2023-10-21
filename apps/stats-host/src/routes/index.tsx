@@ -3,6 +3,7 @@ import { Router, Route, RootRoute, Outlet } from "@tanstack/react-router";
 import { PageWrapper } from "@stats/shared-web/components";
 import { UserStats, UsersStats } from "../modules";
 
+// @ts-expect-error TODO: add types for remote
 import { GamesStats } from "@stats/remote/modules";
 import { trpc } from "@stats/shared-web/utils";
 
