@@ -1,6 +1,6 @@
-import { type Config } from "@stats/tailwind";
 import plugin from "tailwindcss/plugin";
 import { RegularFontSizes, MediumFontSizes, SemiboldFontSizes } from "./theme";
+import { type Config } from "tailwindcss";
 
 export * from "tailwindcss";
 

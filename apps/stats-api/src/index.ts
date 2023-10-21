@@ -5,12 +5,14 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { appRouter } from "./root";
 import { createTRPCContext } from "./trpc";
 import { PORT } from "./env";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
-// do i need that?
+// TODO: do i need that?
 // app.use(morgan("dev")); // for pretty logging
 
 const TRPC_ENDPOINT = "/trpc";

@@ -1,18 +1,20 @@
-import { GameCard, List, PageWrapper } from "@stats/shared-web/components";
-import { trpc } from "@stats/shared-web/utils";
+import { GameCard, List } from "@stats/shared-web/components";
+import { type RouterOutputs } from "@stats/shared-web/utils";
 import { type FC, memo } from "react";
 
-export const GamesStats: FC = memo(() => {
-  const {
-    data: games,
-    error,
-    isLoading: isFirstLoading,
-    isFetching: isFetchingMore,
-    isError,
-    isRefetching,
-  } = trpc.stats.getGamesStats.useQuery({});
-  return (
-    <PageWrapper>
+export type GamesStatsProps = {
+  games: RouterOutputs["stats"]["getGamesStats"] | undefined;
+  error?: string;
+  isFirstLoading: boolean;
+  isFetchingMore: boolean;
+  isError: boolean;
+  isRefetching: boolean;
+};
+
+export const GamesStats: FC<GamesStatsProps> = memo(
+  ({ games, error, isFirstLoading, isFetchingMore, isError, isRefetching }) => {
+    console.log(games, error);
+    return (
       <List
         keyExtractor={({ item }) => item.id}
         data={games}
@@ -20,9 +22,9 @@ export const GamesStats: FC = memo(() => {
         isFetchingMore={isFetchingMore}
         isFirstLoading={isFirstLoading}
         isRefetching={isRefetching}
-        error={error?.message}
+        error={error}
         listItem={({ item }) => <GameCard game={item} />}
       />
-    </PageWrapper>
-  );
-});
+    );
+  },
+);

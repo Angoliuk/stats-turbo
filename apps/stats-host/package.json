@@ -8,7 +8,7 @@
     "build": "vite build",
     "docker": "docker-compose -f ../../docker-compose.micro.yaml up",
     "docker:build": "docker-compose -f ../../docker-compose.micro.yaml up --build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 5521",
     "lint": "concurrently \"eslint --ext '.tsx,.ts' --max-warnings=0 . \" \"prettier --check './{src,test}/**/*.{ts,tsx}' --config '../../.prettierrc'\" \"tsc --noEmit \"",
     "lint:fix": "eslint . --ext '.tsx,.ts' --fix && prettier --write './**/*.{ts,tsx}'",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -f tsconfig.tsbuildinfo"

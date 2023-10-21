@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "serve": "vite preview",
+    "preview": "vite preview --port 5522",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist && rm -f tsconfig.tsbuildinfo",
     "lint": "concurrently \"eslint --ext '.tsx,.ts' --max-warnings=0 . \" \"prettier --check './{src,test}/**/*.{ts,tsx}' --config '../../.prettierrc'\" \"tsc --noEmit \"",
     "lint:fix": "eslint . --ext '.tsx,.ts' --fix && prettier --write './**/*.{ts,tsx}' "

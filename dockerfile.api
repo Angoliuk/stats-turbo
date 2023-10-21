@@ -39,7 +39,7 @@ WORKDIR /app
 
 COPY --from=build /app ./
 
-EXPOSE 80
+EXPOSE 5555
 
 CMD cd apps/stats-api && npm run start
 # cd ./packages/prisma && npm run pushDB && cd ../../apps/stats-api && npm run start
